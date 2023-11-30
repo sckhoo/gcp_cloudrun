@@ -4,4 +4,4 @@ app = FastAPI()
 
 @app.get("/", tags=["root"])
 async def root():
-    return {"message": "Hello another New World"}
+    return {"message": "If you see this, the Github trigger cloud build work"}
