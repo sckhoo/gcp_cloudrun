@@ -36,6 +36,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 url.txt
+how_to_run.txt
 
 # Unit test / coverage reports
 htmlcov/
