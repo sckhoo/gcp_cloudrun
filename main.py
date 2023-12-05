@@ -22,8 +22,8 @@ async def update_data(item_id: int, data: dict):
     print(item_id)
     return {"message": "Data updated successfully!"}
 
-@app.post("/add")
-async def create_data(data: dict):
+@app.post("/items/{item_id}")
+async def create_data(item_id: int, data: dict):
     print(data)
     return {"message": "Data created successfully!"}
 
