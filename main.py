@@ -24,6 +24,6 @@ def shutdown_db_client():
 
 @app.get("/", tags=["root"])
 async def root():
-    return {"message": "Welcome to My API Server on Cloud Run v3"}
+    return {"message": "Welcome to My API Server on Cloud Run v4"}
 
 app.include_router(items_router, tags=["items"], prefix="/items")
