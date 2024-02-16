@@ -6,6 +6,7 @@ router = APIRouter()
 
 @router.get("/{item_id}", response_description="Retrieve a record")
 async def get_data(item_id: int):
+    print("hello")
     return {"message": "Data retrieve successfully!"}
 
 @router.put("/{item_id}", response_description="Update a record")
