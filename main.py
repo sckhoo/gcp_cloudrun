@@ -11,7 +11,7 @@ items = {
 
 @app.get("/", tags=["root"])
 async def root():
-    return {"message": "Welcome to My API Server on Cloud Run"}
+    return {"message": "Welcome to My API Server on Cloud Run - CI/CD"}
 
 @app.get("/items/{item_id}")
 async def get_data(item_id: int):
