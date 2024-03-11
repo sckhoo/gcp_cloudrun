@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from typing import Optional
+from routes import router as items_router
+
 
 app = FastAPI()
 
@@ -9,30 +11,23 @@ items = {
     3: {"name": "Kawasaki", "price": 12.99},
 }
 
+@app.on_event("startup")
+def startup_db_client():
+    # app.mongodb_client = MongoClient(config["ATLAS_URI"])
+    # app.database = app.mongodb_client[config["DB_NAME"]]
+    print("connecting to DB, send message to log")
+    
+@app.on_event("shutdown")
+def shutdown_db_client():
+    # app.mongodb_client.close()
+    print("closing db connection, send message to log")
+
 @app.get("/", tags=["root"])
 async def root():
+<<<<<<< HEAD
     return {"message": "Welcome to My API Server on Cloud Run - CI/CD"}
+=======
+    return {"message": "Welcome to My API Server on Cloud Run v5"}
+>>>>>>> origin/main
 
-@app.get("/items/{item_id}")
-async def get_data(item_id: int):
-    return {"message": "Data retrieve successfully!"}
-
-@app.put("/items/{item_id}")
-async def update_data(item_id: int, data: dict):
-    print(item_id)
-    return {"message": "Data updated successfully!"}
-
-@app.post("/add")
-async def create_data(data: dict):
-    print(data)
-    return {"message": "Data created successfully!"}
-
-@app.delete("/items/{item_id}")
-async def delete_data(item_id: int, data: dict):
-    print(data)
-    return {"message": "Data deleted successfully!"}
-
-@app.patch("/items/{item_id}")
-async def patch_data(item_id: int, data: dict):
-    print(item_id, data)
-    return {"message": "Data patched successfully!"}
+app.include_router(items_router, tags=["items"], prefix="/items")
